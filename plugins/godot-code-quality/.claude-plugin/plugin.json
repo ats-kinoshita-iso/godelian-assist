@@ -1,0 +1,19 @@
+{
+  "name": "godot-code-quality",
+  "description": "Unified quality gate for Godot 4.x projects: runs gdlint, gdformat, GdUnit4 tests, and C# Roslyn checks as a single pass/fail gate with per-check breakdown.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/godelian-assist",
+  "license": "MIT",
+  "keywords": [
+    "godot",
+    "quality",
+    "gdlint",
+    "gdformat",
+    "gdunit4",
+    "csharp",
+    "gate"
+  ]
+}

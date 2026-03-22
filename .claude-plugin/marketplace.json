@@ -1,0 +1,87 @@
+{
+  "name": "godelian-assist",
+  "owner": {
+    "name": "ats-kinoshita-iso"
+  },
+  "plugins": [
+    {
+      "name": "agent-patterns",
+      "source": "./plugins/agent-patterns",
+      "description": "Skills for designing and evaluating multi-agent systems: orchestrator/worker decomposition, output quality review, and self-improving evaluator/optimizer loops.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "context-sync",
+      "source": "./plugins/context-sync",
+      "description": "Keeps CLAUDE.md files in sync with the actual codebase by detecting meaningful changes and proposing targeted updates.",
+      "version": "1.1.0"
+    },
+    {
+      "name": "eval-framework",
+      "source": "./plugins/eval-framework",
+      "description": "Evaluation framework skills for designing scoring rubrics, running structured evaluations on LLM outputs, and comparing candidate outputs to recommend a winner.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "game-design",
+      "source": "./plugins/game-design",
+      "description": "Game design skills for 3D action-RPGs: core loop design, system architecture, balance tuning, and progression design. Bridges design intent to Godot 4.x implementation.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "gdscript-guide",
+      "source": "./plugins/gdscript-guide",
+      "description": "GDScript 2.0 idioms, static typing best practices, performance patterns, and style guidance for Godot 4.x. Reference when writing or reviewing GDScript code.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "godot-code-quality",
+      "source": "./plugins/godot-code-quality",
+      "description": "Unified quality gate for Godot 4.x projects: runs gdlint, gdformat, GdUnit4 tests, and C# Roslyn checks as a single pass/fail gate with per-check breakdown.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "godot-patterns",
+      "source": "./plugins/godot-patterns",
+      "description": "Architectural patterns for Godot 4.x: scene composition, node hierarchies, signal-based decoupling, Autoloads, and Resource design. Reference when designing new scenes or refactoring existing ones.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "memory-manager",
+      "source": "./plugins/memory-manager",
+      "description": "Skills for persistent memory across Claude Code sessions: initialize a memory file, recall relevant context for the current task, and persist session learnings.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "observability",
+      "source": "./plugins/observability",
+      "description": "Observability skills for designing logging and tracing strategies, instrumenting existing code with structured log points, and analyzing trace logs to diagnose production issues.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "plan-manager",
+      "source": "./plugins/plan-manager",
+      "description": "Structured plan lifecycle management with automatic tracking, gate validation, and archival of implementation plans.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "planning",
+      "source": "./plugins/planning",
+      "description": "Produces phased implementation plans with explicit gates and validating tests at each checkpoint.",
+      "version": "2.1.0"
+    },
+    {
+      "name": "test-quality",
+      "source": "./plugins/test-quality",
+      "description": "Test development and improvement system that tracks quality patterns and progressively improves the test suite.",
+      "version": "1.1.0"
+    },
+    {
+      "name": "workspace-clean",
+      "source": "./plugins/workspace-clean",
+      "description": "Automated workspace hygiene checks that detect build artifacts, stale temp files, orphaned docs, and project-level clutter.",
+      "version": "1.0.0"
+    }
+  ],
+  "_generated_at": "2026-03-22T16:30:51.677594+00:00"
+}

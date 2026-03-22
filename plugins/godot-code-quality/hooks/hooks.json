@@ -1,0 +1,15 @@
+{
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "matcher": "Bash(git commit*)",
+      "type": "command",
+      "command": "echo '=== Godot Quality Gate ===' && echo -n '[GDScript lint]  ' && (gdlint $(find . -name '*.gd' -not -path './.godot/*' 2>/dev/null) 2>&1 | grep -c 'error' || echo 0) | xargs -I{} sh -c 'test {} -eq 0 && echo PASS || echo FAIL ({} errors)' && echo -n '[GDScript format] ' && (gdformat --check $(find . -name '*.gd' -not -path './.godot/*' 2>/dev/null) 2>&1 | grep -c 'would reformat' || echo 0) | xargs -I{} sh -c 'test {} -eq 0 && echo PASS || echo FAIL ({} files need reformat)' && echo -n '[Python tooling]  ' && (uv run ruff check . --quiet 2>&1 | wc -l | xargs -I{} sh -c 'test {} -eq 0 && echo PASS || echo FAIL') 2>/dev/null || true"
+    },
+    {
+      "event": "Stop",
+      "type": "command",
+      "command": "echo '\\n=== Session Quality Summary ===' && echo -n 'GDScript lint:    ' && (gdlint $(find . -name '*.gd' -not -path './.godot/*' 2>/dev/null) 2>&1 | grep -c 'error' 2>/dev/null || echo 'N/A') && echo -n 'GDScript format:  ' && (gdformat --check $(find . -name '*.gd' -not -path './.godot/*' 2>/dev/null) 2>&1 | tail -1 2>/dev/null || echo 'N/A') && echo 'Run /quality for full scored report.' 2>/dev/null || true"
+    }
+  ]
+}

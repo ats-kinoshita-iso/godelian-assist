@@ -1,0 +1,19 @@
+{
+  "name": "godot-patterns",
+  "description": "Architectural patterns for Godot 4.x: scene composition, node hierarchies, signal-based decoupling, Autoloads, and Resource design. Reference when designing new scenes or refactoring existing ones.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/godelian-assist",
+  "license": "MIT",
+  "keywords": [
+    "godot",
+    "patterns",
+    "architecture",
+    "scenes",
+    "nodes",
+    "signals",
+    "resources"
+  ]
+}

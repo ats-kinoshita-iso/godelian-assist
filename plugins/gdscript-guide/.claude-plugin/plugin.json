@@ -1,0 +1,18 @@
+{
+  "name": "gdscript-guide",
+  "description": "GDScript 2.0 idioms, static typing best practices, performance patterns, and style guidance for Godot 4.x. Reference when writing or reviewing GDScript code.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/godelian-assist",
+  "license": "MIT",
+  "keywords": [
+    "godot",
+    "gdscript",
+    "typing",
+    "idioms",
+    "performance",
+    "style"
+  ]
+}
