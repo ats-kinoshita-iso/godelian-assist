@@ -1,0 +1,28 @@
+[gd_resource type="PlayerStats" format=3]
+
+[resource]
+# Movement  (balance-design skill: target feel = snappy, not floaty)
+# move_speed=5 gives ~10 seconds to cross a 50m room — feels brisk on foot
+# sprint_speed=9 is 1.8x walk — noticeable but not overwhelming
+move_speed = 5.0
+sprint_speed = 9.0
+jump_velocity = 4.5
+air_control = 0.3
+gravity_scale = 1.0
+
+# Mouse look  (tuned for 800 DPI mouse at default sensitivity)
+mouse_sensitivity = 0.003
+pitch_limit_deg = 89.0
+
+# Health  (balance-design: trash enemy TTK target = 3-4 hits at 25 dmg each)
+max_health = 100.0
+invincibility_time = 0.2
+
+# Stamina  (balance-design: sprint exhausts in 5s, recovers in 10s — manageable pressure)
+# drain_rate=20 => 100/20 = 5s of full sprint
+# regen_rate=10 => 100/10 = 10s to fully recover
+max_stamina = 100.0
+stamina_drain_rate = 20.0
+stamina_regen_rate = 10.0
+stamina_regen_delay = 1.5
+sprint_min_stamina = 10.0
