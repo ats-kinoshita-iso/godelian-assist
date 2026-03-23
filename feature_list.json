@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "phase": "godot-p1",
+    "description": "Add a 'gdscript-to-csharp' skill to gdscript-guide plugin. The skill guides conversion of a GDScript file to idiomatic C# for Godot 4.x: maps GDScript types to C# equivalents, shows signal/delegate patterns, @export to [Export], and @onready to field initialization. Body must be 15+ lines with side-by-side GDScript/C# examples.",
+    "verification": [
+      "Step 1: plugins/gdscript-guide/skills/gdscript-to-csharp/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md contains at least one side-by-side GDScript/C# code comparison",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 2,
+    "phase": "godot-p1",
+    "description": "Add a 'resource-patterns' skill to godot-patterns plugin. The skill covers Godot 4.x Resource design: when to use Resource vs Node, defining custom Resource subclasses, using Resources for config/stats/item data, loading/saving .tres files, and sharing Resources across scenes. Body must be 15+ lines with typed GDScript examples.",
+    "verification": [
+      "Step 1: plugins/godot-patterns/skills/resource-patterns/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md contains GDScript code examples with static typing",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 3,
+    "phase": "godot-p1",
+    "description": "Add a 'test-gen-godot' skill to the test-quality plugin. The skill generates GdUnit4 test stubs for a GDScript class: identifies testable methods, creates a GdUnitTestSuite subclass with test_ methods for each, adds before/after setup, and shows how to test signals and async code with GdUnit4. Body must be 15+ lines.",
+    "verification": [
+      "Step 1: plugins/test-quality/skills/test-gen-godot/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md contains a GdUnit4 test class example with class_name extending GdUnitTestSuite",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 4,
+    "phase": "godot-p1",
+    "description": "Add a 'level-design' skill to the game-design plugin. The skill covers 3D level design for action-RPGs: layout principles (encounter pacing, navigation flow, visual language), implementing with Godot's GridMap or CSGMesh, marking spawn points and triggers with Area3D, and connecting level events to game systems via signals. Body must be 15+ lines.",
+    "verification": [
+      "Step 1: plugins/game-design/skills/level-design/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md mentions GridMap or CSGMesh and Area3D",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 5,
+    "phase": "godot-p2",
+    "description": "Add integration tests for the godot-code-quality plugin: create tests/plugins/test_godot_code_quality_integration.py with at least 4 test functions. Tests should verify: hooks.json is valid JSON with PreToolUse and Stop events, quality skill SKILL.md body has >= 10 lines and mentions gdlint and GdUnit4, quality-fix skill SKILL.md body has >= 10 lines and mentions gdformat.",
+    "verification": [
+      "Step 1: tests/plugins/test_godot_code_quality_integration.py exists with >= 4 test functions",
+      "Step 2: Run `uv run pytest tests/plugins/test_godot_code_quality_integration.py -v` -- all pass",
+      "Step 3: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 6,
+    "phase": "godot-p2",
+    "description": "Add integration tests for the godot-patterns plugin: create tests/plugins/test_godot_patterns_integration.py with at least 4 test functions. Tests should verify: all 3 skills exist (scene-architecture, node-composition, signal-design), each SKILL.md has body >= 10 lines, scene-architecture mentions 'CharacterBody' or 'CollisionShape', signal-design mentions 'EventBus' or 'signal'.",
+    "verification": [
+      "Step 1: tests/plugins/test_godot_patterns_integration.py exists with >= 4 test functions",
+      "Step 2: Run `uv run pytest tests/plugins/test_godot_patterns_integration.py -v` -- all pass",
+      "Step 3: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 7,
+    "phase": "godot-p2",
+    "description": "Add integration tests for the gdscript-guide plugin: create tests/plugins/test_gdscript_guide_integration.py with at least 4 test functions. Tests should verify: all 3 original skills exist (typing-guide, idioms, performance), each SKILL.md has body >= 10 lines, typing-guide mentions '@export' and 'Array[', performance mentions '@onready' and '_process'.",
+    "verification": [
+      "Step 1: tests/plugins/test_gdscript_guide_integration.py exists with >= 4 test functions",
+      "Step 2: Run `uv run pytest tests/plugins/test_gdscript_guide_integration.py -v` -- all pass",
+      "Step 3: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 8,
+    "phase": "godot-p2",
+    "description": "Add integration tests for the game-design plugin: create tests/plugins/test_game_design_integration.py with at least 4 test functions. Tests should verify: all 3 original skills exist (systems-design, game-loop, balance-design), each SKILL.md has body >= 10 lines, game-loop mentions 'micro' and 'macro', balance-design mentions a numeric formula or TTK.",
+    "verification": [
+      "Step 1: tests/plugins/test_game_design_integration.py exists with >= 4 test functions",
+      "Step 2: Run `uv run pytest tests/plugins/test_game_design_integration.py -v` -- all pass",
+      "Step 3: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 9,
+    "phase": "godot-p3",
+    "description": "Create a Godot-specific CLAUDE.md template in cookbook/claude-md/godot.md. The template should cover: target engine version placeholder, GDScript and C# conventions, GdUnit4 testing commands, gdlint/gdformat setup, key Godot commit patterns, and proactiveness rules for Godot development. Must be at least 60 lines.",
+    "verification": [
+      "Step 1: cookbook/claude-md/godot.md exists",
+      "Step 2: File is >= 60 lines",
+      "Step 3: File mentions GdUnit4, gdlint, gdformat, and @export",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 10,
+    "phase": "godot-p3",
+    "description": "Add a 'state-machine' skill to godot-patterns plugin. The skill covers implementing a state machine in Godot 4.x: enum-based states, the Node-per-state pattern (each state is a child Node with enter/exit/update methods), transitioning between states, and connecting state transitions to animations. Body must be 15+ lines with typed GDScript examples.",
+    "verification": [
+      "Step 1: plugins/godot-patterns/skills/state-machine/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md contains a GDScript state machine example with static typing",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 11,
+    "phase": "godot-p3",
+    "description": "Add a 'save-system' skill to the game-design plugin. The skill covers save/load architecture for Godot 4.x: what data to persist, using ConfigFile vs JSON vs binary, the ISaveable interface pattern, auto-save triggers, and handling version migration when save format changes. Body must be 15+ lines with typed GDScript examples.",
+    "verification": [
+      "Step 1: plugins/game-design/skills/save-system/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md mentions ConfigFile or JSON and includes a GDScript code example",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  },
+  {
+    "id": 12,
+    "phase": "godot-p3",
+    "description": "Add a 'debug-tools' skill to the observability plugin tuned for Godot. The skill covers: using Godot's built-in profiler, adding DebugDraw3D/2D calls, logging to Output with structured categories, performance monitors via Performance.get_monitor(), and creating an in-game debug overlay scene. Body must be 15+ lines.",
+    "verification": [
+      "Step 1: plugins/observability/skills/debug-tools/SKILL.md exists",
+      "Step 2: SKILL.md body is >= 15 non-blank lines",
+      "Step 3: SKILL.md mentions Performance.get_monitor() or DebugDraw",
+      "Step 4: Run `uv run pytest tests/ -v` -- all pass"
+    ],
+    "passes": false
+  }
+]
