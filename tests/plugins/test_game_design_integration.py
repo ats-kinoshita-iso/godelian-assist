@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 PLUGIN_DIR = Path(__file__).parent.parent.parent / "plugins" / "game-design"
-EXPECTED_SKILLS = ["systems-design", "game-loop", "balance-design"]
+EXPECTED_SKILLS = ["systems-design", "game-loop", "balance-design", "level-design"]
 
 
 def _read_skill(skill_name: str) -> str:
@@ -63,3 +63,19 @@ class TestGameDesignStructure:
     def test_game_loop_mentions_feedback(self) -> None:
         content = _read_skill("game-loop")
         assert "feedback" in content.lower() or "feel" in content.lower()
+
+    def test_level_design_skill_exists(self) -> None:
+        path = PLUGIN_DIR / "skills" / "level-design" / "SKILL.md"
+        assert path.exists()
+
+    def test_level_design_body_depth(self) -> None:
+        lines = _body_lines("level-design")
+        assert len(lines) >= 15, f"level-design body too short: {len(lines)} lines"
+
+    def test_level_design_mentions_gridmap_or_csg(self) -> None:
+        content = _read_skill("level-design")
+        assert "GridMap" in content or "CSG" in content
+
+    def test_level_design_mentions_area3d(self) -> None:
+        content = _read_skill("level-design")
+        assert "Area3D" in content

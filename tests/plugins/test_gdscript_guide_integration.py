@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 PLUGIN_DIR = Path(__file__).parent.parent.parent / "plugins" / "gdscript-guide"
-EXPECTED_SKILLS = ["typing-guide", "idioms", "performance"]
+EXPECTED_SKILLS = ["typing-guide", "idioms", "performance", "gdscript-to-csharp"]
 
 
 def _read_skill(skill_name: str) -> str:
@@ -64,3 +64,22 @@ class TestGdscriptGuideStructure:
     def test_performance_mentions_caching(self) -> None:
         content = _read_skill("performance")
         assert "cache" in content.lower() or "get_node" in content.lower()
+
+    def test_gdscript_to_csharp_skill_exists(self) -> None:
+        path = PLUGIN_DIR / "skills" / "gdscript-to-csharp" / "SKILL.md"
+        assert path.exists()
+
+    def test_gdscript_to_csharp_body_depth(self) -> None:
+        lines = _body_lines("gdscript-to-csharp")
+        assert len(lines) >= 15, f"gdscript-to-csharp body too short: {len(lines)} lines"
+
+    def test_gdscript_to_csharp_has_side_by_side_example(self) -> None:
+        content = _read_skill("gdscript-to-csharp")
+        # Must have both GDScript and C# code blocks
+        assert "gdscript" in content.lower() or "# GDScript" in content
+        assert "csharp" in content.lower() or "// C#" in content
+
+    def test_gdscript_to_csharp_mentions_export_and_signal(self) -> None:
+        content = _read_skill("gdscript-to-csharp")
+        assert "@export" in content or "[Export]" in content
+        assert "signal" in content.lower() or "[Signal]" in content

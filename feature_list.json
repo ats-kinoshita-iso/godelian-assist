@@ -9,7 +9,7 @@
       "Step 3: SKILL.md contains at least one side-by-side GDScript/C# code comparison",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
       "Step 3: SKILL.md contains GDScript code examples with static typing",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
       "Step 3: SKILL.md contains a GdUnit4 test class example with class_name extending GdUnitTestSuite",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
       "Step 3: SKILL.md mentions GridMap or CSGMesh and Area3D",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 5,
@@ -56,7 +56,7 @@
       "Step 2: Run `uv run pytest tests/plugins/test_godot_code_quality_integration.py -v` -- all pass",
       "Step 3: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 6,
@@ -67,7 +67,7 @@
       "Step 2: Run `uv run pytest tests/plugins/test_godot_patterns_integration.py -v` -- all pass",
       "Step 3: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 7,
@@ -78,7 +78,7 @@
       "Step 2: Run `uv run pytest tests/plugins/test_gdscript_guide_integration.py -v` -- all pass",
       "Step 3: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 8,
@@ -89,7 +89,7 @@
       "Step 2: Run `uv run pytest tests/plugins/test_game_design_integration.py -v` -- all pass",
       "Step 3: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 9,
@@ -101,7 +101,7 @@
       "Step 3: File mentions GdUnit4, gdlint, gdformat, and @export",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 10,
@@ -113,7 +113,7 @@
       "Step 3: SKILL.md contains a GDScript state machine example with static typing",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 11,
@@ -125,7 +125,7 @@
       "Step 3: SKILL.md mentions ConfigFile or JSON and includes a GDScript code example",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   },
   {
     "id": 12,
@@ -137,6 +137,6 @@
       "Step 3: SKILL.md mentions Performance.get_monitor() or DebugDraw",
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
-    "passes": false
+    "passes": true
   }
 ]

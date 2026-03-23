@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 PLUGIN_DIR = Path(__file__).parent.parent.parent / "plugins" / "godot-patterns"
-EXPECTED_SKILLS = ["scene-architecture", "node-composition", "signal-design"]
+EXPECTED_SKILLS = ["scene-architecture", "node-composition", "signal-design", "resource-patterns"]
 
 
 def _read_skill(skill_name: str) -> str:
@@ -62,3 +62,20 @@ class TestGodotPatternsStructure:
     def test_signal_design_mentions_connection_patterns(self) -> None:
         content = _read_skill("signal-design")
         assert "connect" in content.lower()
+
+    def test_resource_patterns_skill_exists(self) -> None:
+        path = PLUGIN_DIR / "skills" / "resource-patterns" / "SKILL.md"
+        assert path.exists()
+
+    def test_resource_patterns_body_depth(self) -> None:
+        lines = _body_lines("resource-patterns")
+        assert len(lines) >= 15, f"resource-patterns body too short: {len(lines)} lines"
+
+    def test_resource_patterns_mentions_export_and_tres(self) -> None:
+        content = _read_skill("resource-patterns")
+        assert "@export" in content
+        assert ".tres" in content or "tres" in content.lower()
+
+    def test_resource_patterns_covers_node_vs_resource_decision(self) -> None:
+        content = _read_skill("resource-patterns")
+        assert "Node" in content and "Resource" in content
