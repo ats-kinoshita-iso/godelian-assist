@@ -40,6 +40,61 @@ Design or review a Godot 4.x scene hierarchy.
 
 7. **Export variables** — list all `@export` properties the scene exposes for tuning in the Inspector, with suggested default values.
 
+## CharacterBody3D FPS Controller — Correct Node Layout
+
+The two most common mistakes when hand-building an FPS scene are wrong
+`CollisionShape3D` offset and wrong `Head` (camera) height:
+
+```
+CharacterBody3D          ← origin = feet (y=0 in world = floor contact point)
+├── CollisionShape3D     ← offset y = capsule_height / 2  (e.g. y=0.9 for 1.8 m capsule)
+│     CapsuleShape3D(height=1.8, radius=0.4)
+├── Head (Node3D)        ← offset y ≈ 1.6  (eye height above feet, NOT y=0.75)
+│   └── Camera3D
+├── HealthComponent
+├── StaminaComponent
+└── AudioStreamPlayer3D
+```
+
+| Node | Required Y offset | Consequence if wrong |
+|------|-------------------|----------------------|
+| `CollisionShape3D` | `capsule_height / 2` (0.9 m) | Capsule floats or sinks into floor |
+| `Head` | ~1.6 m from feet | Camera inside body (y=0) or below capsule center (y=0.75) |
+
+## Hand-Authoring .tscn Files Outside the Editor
+
+Godot reports **"missing dependencies"** for files that physically exist when
+the `[gd_scene]` header or `[ext_resource]` blocks contain invalid or fake UIDs.
+
+```ini
+# CORRECT — omit uid= entirely; Godot assigns real UIDs on first open
+[gd_scene load_steps=3 format=3]
+
+# ext_resource requires: type, path, id — uid= is optional, omit if hand-writing
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="2_hud"]
+
+# sub_resource: only type and id in header; properties follow
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.4
+height = 1.8
+
+# Root node: NO parent= attribute
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_player")
+
+# All other nodes: parent= required
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_1")
+```
+
+| Mistake | Fix |
+|---------|-----|
+| `uid="uid://my_fake_name"` on `[gd_scene]` | Omit `uid=` entirely |
+| `uid="uid://my_fake_name"` on `[ext_resource]` | Omit `uid=` — Godot resolves by `path=` |
+| Root `[node]` has `parent="."` | Root must have **no** `parent=` attribute |
+
 ## Output Format
 
 Produce the node tree, then a table of signals, then the anti-pattern review.

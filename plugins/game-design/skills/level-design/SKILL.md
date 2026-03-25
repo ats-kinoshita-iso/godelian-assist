@@ -115,11 +115,32 @@ func _on_exit_reached(body: Node3D) -> void:
         EventBus.level_completed.emit(level_id)
 ```
 
+## Platform Height Budget (Jump Physics)
+
+When placing platforms, calculate reachable height from the player's jump stats:
+
+```
+max_jump_height = jump_velocity² / (2 × gravity)
+
+# Default Godot gravity = 9.8 m/s²
+# jump_velocity = 4.5  →  max_jump_height ≈ 1.03 m
+# jump_velocity = 6.0  →  max_jump_height ≈ 1.84 m
+```
+
+Use this to space platforms so each step is reachable with a running jump,
+and mark "intended shortcut" platforms ~10 % above max height (barely missable).
+
+| Jump velocity | Max height | Comfortable step | Challenge step |
+|---------------|-----------|-----------------|----------------|
+| 4.5 m/s | 1.03 m | 0.7–0.8 m | 0.9–1.0 m |
+| 6.0 m/s | 1.84 m | 1.2–1.4 m | 1.6–1.8 m |
+
 ## Steps
 
 1. Sketch the layout on paper first — identify entry, encounters, branching, exit.
-2. Build the scene hierarchy as shown above.
-3. Prototype geometry with CSGMesh; place spawn zones and trigger volumes.
-4. Set up NavigationRegion3D and bake the nav mesh.
-5. Wire Area3D signals to the level manager.
-6. Playtest pacing: time-to-first-encounter, downtime between fights, overall duration.
+2. Calculate the player's max jump height from `jump_velocity` in their stats resource.
+3. Build the scene hierarchy as shown above.
+4. Prototype geometry with CSGMesh; place spawn zones and trigger volumes.
+5. Set up NavigationRegion3D and bake the nav mesh.
+6. Wire Area3D signals to the level manager.
+7. Playtest pacing: time-to-first-encounter, downtime between fights, overall duration.
