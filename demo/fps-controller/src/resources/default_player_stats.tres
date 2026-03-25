@@ -1,6 +1,9 @@
-[gd_resource type="PlayerStats" format=3]
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/resources/player_stats.gd" id="1_stats_script"]
 
 [resource]
+script = ExtResource("1_stats_script")
 # Movement  (balance-design skill: target feel = snappy, not floaty)
 # move_speed=5 gives ~10 seconds to cross a 50m room — feels brisk on foot
 # sprint_speed=9 is 1.8x walk — noticeable but not overwhelming
