@@ -6,6 +6,8 @@ description: >-
   triggers, and handling format version migration. Use when asked to "design the
   save system", "how do I save game progress?", or "implement save/load".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design and implement a save/load system for a Godot 4.x action-RPG.
 

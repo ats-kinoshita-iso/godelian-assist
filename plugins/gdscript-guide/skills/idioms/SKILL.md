@@ -6,6 +6,8 @@ description: >-
   GDScript 2.0 syntax. Use when asked to "make this more idiomatic", "modernize
   this script", or "use better Godot patterns here".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Rewrite a GDScript snippet or file to use idiomatic Godot 4.x patterns.
 

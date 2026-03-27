@@ -1,0 +1,18 @@
+{
+  "name": "designer-brief",
+  "description": "Formal designer-to-programmer handoff workflow: brief, spec approval, iteration, and feature completion for Godot game development.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/godelian-assist",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "designer",
+    "brief",
+    "spec",
+    "iteration",
+    "godot"
+  ]
+}

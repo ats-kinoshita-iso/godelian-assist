@@ -1,0 +1,14 @@
+{
+  "name": "scene-builder",
+  "version": "1.0.0",
+  "description": "Skills for generating and auditing Godot .tscn scene files.",
+  "license": "MIT",
+  "keywords": ["scene", "tscn", "godot", "builder"],
+  "skills": [
+    "create-scene",
+    "add-node",
+    "wire-signals",
+    "scene-from-brief",
+    "scene-audit"
+  ]
+}

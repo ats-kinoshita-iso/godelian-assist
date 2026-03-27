@@ -6,6 +6,8 @@ description: >-
   skeleton. Use when asked to "design the X system", "how should Y work?", or
   "spec out the combat/inventory/dialogue system".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design a game system for a 3D action-RPG and produce a Godot 4.x implementation plan.
 

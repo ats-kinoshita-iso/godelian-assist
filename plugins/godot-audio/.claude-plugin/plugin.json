@@ -1,0 +1,12 @@
+{
+  "name": "godot-audio",
+  "version": "1.0.0",
+  "description": "Skills for Godot 4.x audio: bus architecture, adaptive music, and SFX pooling patterns.",
+  "license": "MIT",
+  "keywords": ["audio", "music", "sfx", "bus", "godot"],
+  "skills": [
+    "audio-architecture",
+    "adaptive-music",
+    "sfx-patterns"
+  ]
+}

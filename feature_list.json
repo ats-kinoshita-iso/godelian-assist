@@ -138,5 +138,451 @@
       "Step 4: Run `uv run pytest tests/ -v` -- all pass"
     ],
     "passes": true
+  },
+  {
+    "id": 13,
+    "phase": "godot-p4",
+    "description": "Create cookbook/mcp/gdai-mcp.md: complete GDAI MCP setup guide for Windows 11. Must be >=40 lines, contain a fenced JSON settings.json block, mention capture_screenshot (or correct tool name from research), and include Windows-specific notes.",
+    "verification": [
+      "Step 1: cookbook/mcp/gdai-mcp.md exists >=40 lines",
+      "Step 2: contains fenced JSON settings.json MCP block",
+      "Step 3: mentions screenshot tool name",
+      "Step 4: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 14,
+    "phase": "godot-p4",
+    "description": "Create cookbook/mcp/godot-mcp-minimal.md: lighter godot-mcp alternative guide. Must be >=25 lines, contain npm install command and JSON config block, and a comparison table vs GDAI MCP.",
+    "verification": [
+      "Step 1: file exists >=25 lines",
+      "Step 2: contains npm install command",
+      "Step 3: contains comparison table",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 15,
+    "phase": "godot-p4",
+    "description": "Create cookbook/mcp/gdscript-lsp.md: GDScript LSP bridge setup guide. Must be >=30 lines, contain --lsp-port in the guide and a settings.json config block.",
+    "verification": [
+      "Step 1: file exists >=30 lines",
+      "Step 2: contains '--lsp-port'",
+      "Step 3: contains settings.json config block",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 16,
+    "phase": "godot-p4",
+    "description": "Add lsp-setup skill to godot-code-quality plugin. Body >=15 lines. Must mention --lsp-port, the TCP/stdio bridge architecture, and how to verify the LSP is working.",
+    "verification": [
+      "Step 1: plugins/godot-code-quality/skills/lsp-setup/SKILL.md exists",
+      "Step 2: body >=15 non-blank lines",
+      "Step 3: mentions '--lsp-port' and bridge",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 17,
+    "phase": "godot-p4",
+    "description": "Add screenshot-review skill to godot-code-quality plugin. Body >=15 lines. Must mention GDAI MCP, 'design intent', and 'debug output'. Explain when screenshot review applies and its limitations.",
+    "verification": [
+      "Step 1: plugins/godot-code-quality/skills/screenshot-review/SKILL.md exists",
+      "Step 2: body >=15 non-blank lines",
+      "Step 3: mentions GDAI MCP and design intent",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 18,
+    "phase": "godot-p4",
+    "description": "Create tests/plugins/test_godot_code_quality_phase_a.py with >=6 test functions validating lsp-setup and screenshot-review skills and the new mcp cookbook recipes.",
+    "verification": [
+      "Step 1: test file exists with >=6 test functions",
+      "Step 2: uv run pytest tests/plugins/test_godot_code_quality_phase_a.py -v -- all pass",
+      "Step 3: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 19,
+    "phase": "godot-p5",
+    "description": "Create designer-brief plugin with brief and spec-review skills. brief body >=20 lines with full brief template (Intent, Feel, Constraints, Out of scope, Designer acceptance). spec-review body >=15 lines mentioning ACTIVE_SPEC.md.",
+    "verification": [
+      "Step 1: plugins/designer-brief/.claude-plugin/plugin.json exists",
+      "Step 2: skills/brief/SKILL.md body >=20 lines with all 5 template headings",
+      "Step 3: skills/spec-review/SKILL.md body >=15 lines mentions ACTIVE_SPEC.md",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 20,
+    "phase": "godot-p5",
+    "description": "Add iterate, playtest-debrief, and feature-complete skills to designer-brief plugin. iterate >=15 lines mentions 'minimal diff'. playtest-debrief >=15 lines has full template. feature-complete >=12 lines mentions gdlint and GdUnit4.",
+    "verification": [
+      "Step 1: all three SKILL.md files exist",
+      "Step 2: iterate mentions 'minimal diff'",
+      "Step 3: playtest-debrief has What worked/What felt wrong/Bugs/Questions headings",
+      "Step 4: feature-complete mentions gdlint and GdUnit4",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 21,
+    "phase": "godot-p5",
+    "description": "Add hooks.json to designer-brief plugin (PreToolUse on Write/Edit for .gd/.tscn files) and create cookbook/hooks/designer-approval.md >=20 lines with complete check_spec.py script.",
+    "verification": [
+      "Step 1: plugins/designer-brief/hooks/hooks.json is valid JSON with PreToolUse entry",
+      "Step 2: cookbook/hooks/designer-approval.md exists >=20 lines",
+      "Step 3: contains complete check_spec.py script",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 22,
+    "phase": "godot-p5",
+    "description": "Create game-backlog plugin with backlog-init and backlog-status skills. backlog-init >=15 lines contains full JSON schema (id, title, brief, status, priority, spec, notes). backlog-status >=12 lines mentions in_progress.",
+    "verification": [
+      "Step 1: plugins/game-backlog/.claude-plugin/plugin.json exists",
+      "Step 2: backlog-init body >=15 lines with complete JSON schema",
+      "Step 3: backlog-status body >=12 lines mentions in_progress",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 23,
+    "phase": "godot-p5",
+    "description": "Add next-feature and add-feature skills to game-backlog plugin. next-feature >=12 lines mentions pending_approval. add-feature >=10 lines mentions priority.",
+    "verification": [
+      "Step 1: both SKILL.md files exist",
+      "Step 2: next-feature mentions pending_approval",
+      "Step 3: add-feature mentions priority",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 24,
+    "phase": "godot-p5",
+    "description": "Create cookbook/hooks/game-session.md >=25 lines with complete hooks.json block (Start and Stop events) and session protocol rules.",
+    "verification": [
+      "Step 1: file exists >=25 lines",
+      "Step 2: contains fenced JSON with Start and Stop hooks",
+      "Step 3: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 25,
+    "phase": "godot-p5",
+    "description": "Create integration tests for designer-brief (>=8 functions) and game-backlog (>=6 functions) plugins.",
+    "verification": [
+      "Step 1: tests/plugins/test_designer_brief_integration.py exists with >=8 functions",
+      "Step 2: tests/plugins/test_game_backlog_integration.py exists with >=6 functions",
+      "Step 3: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 26,
+    "phase": "godot-p6",
+    "description": "Create cookbook/api-ref/tscn-format.md >=60 lines: complete annotated .tscn example, UID generation rule (uid:// + base62), resource ID format, load_steps formula, signal connection syntax, sub_resource types for 5 common shapes, common mistakes.",
+    "verification": [
+      "Step 1: file exists >=60 lines",
+      "Step 2: contains complete .tscn example in fenced code block",
+      "Step 3: contains 'uid://' format documentation",
+      "Step 4: contains '[connection' signal syntax",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 27,
+    "phase": "godot-p6",
+    "description": "Create scene-builder plugin with create-scene skill. Body >=25 lines. Must contain the generation algorithm (5 steps), CollisionShape3D mandatory child rule, UID generation, and a complete .tscn output example.",
+    "verification": [
+      "Step 1: plugins/scene-builder/.claude-plugin/plugin.json exists",
+      "Step 2: skills/create-scene/SKILL.md body >=25 non-blank lines",
+      "Step 3: contains complete .tscn output in fenced code block",
+      "Step 4: mentions uid generation and CollisionShape rule",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 28,
+    "phase": "godot-p6",
+    "description": "Add add-node and wire-signals skills to scene-builder. add-node >=18 lines mentions path preservation. wire-signals >=15 lines contains [connection syntax and validation steps.",
+    "verification": [
+      "Step 1: both SKILL.md files exist",
+      "Step 2: add-node mentions path preservation >=18 lines",
+      "Step 3: wire-signals contains '[connection' syntax example >=15 lines",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 29,
+    "phase": "godot-p6",
+    "description": "Add scene-from-brief and scene-audit skills to scene-builder. scene-from-brief >=20 lines mentions ACTIVE_SPEC.md and the 5-step generation order. scene-audit >=15 lines mentions orphaned scripts and CollisionShape3D.",
+    "verification": [
+      "Step 1: both SKILL.md files exist",
+      "Step 2: scene-from-brief >=20 lines mentions ACTIVE_SPEC.md",
+      "Step 3: scene-audit >=15 lines mentions orphaned scripts",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 30,
+    "phase": "godot-p6",
+    "description": "Create integration tests for scene-builder (>=10 functions) and cookbook api-ref tests (>=4 functions for tscn-format.md).",
+    "verification": [
+      "Step 1: tests/plugins/test_scene_builder_integration.py >=10 functions",
+      "Step 2: tests/cookbook/test_api_refs.py >=4 functions",
+      "Step 3: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 31,
+    "phase": "godot-p7",
+    "description": "Create project-bootstrap plugin with new-project skill. Body >=25 lines. Must list the 7 initialization steps (project.godot, .gitignore, directories, CLAUDE.md, autoloads, backlog). Mentions game-backlog.json creation.",
+    "verification": [
+      "Step 1: plugins/project-bootstrap/.claude-plugin/plugin.json exists",
+      "Step 2: skills/new-project/SKILL.md body >=25 lines",
+      "Step 3: contains all 7 initialization steps",
+      "Step 4: mentions game-backlog.json",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 32,
+    "phase": "godot-p7",
+    "description": "Add configure-quality skill to project-bootstrap. Body >=18 lines. Must contain complete .gdlintrc content (copy-paste ready), gdtoolkit install command, and quality hooks reference.",
+    "verification": [
+      "Step 1: SKILL.md exists >=18 lines",
+      "Step 2: contains .gdlintrc content",
+      "Step 3: mentions gdtoolkit install and GdUnit4",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 33,
+    "phase": "godot-p7",
+    "description": "Add setup-autoloads skill to project-bootstrap. Body >=20 lines. Must contain three GDScript class skeletons (EventBus, GameManager, SaveManager -- all fully statically typed) and the project.godot [autoload] registration block.",
+    "verification": [
+      "Step 1: SKILL.md exists >=20 lines",
+      "Step 2: contains three GDScript class skeletons",
+      "Step 3: all skeletons use static typing",
+      "Step 4: contains project.godot [autoload] block",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 34,
+    "phase": "godot-p7",
+    "description": "Add setup-directories skill to project-bootstrap and create integration tests (>=8 functions).",
+    "verification": [
+      "Step 1: setup-directories SKILL.md exists >=12 lines mentioning .gdignore",
+      "Step 2: tests/plugins/test_project_bootstrap_integration.py >=8 functions",
+      "Step 3: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 35,
+    "phase": "godot-p8",
+    "description": "Add combat-design and inventory-design skills to game-design plugin. combat-design >=20 lines with AttackData resource schema and typed GDScript hitbox example. inventory-design >=18 lines with ItemData resource schema.",
+    "verification": [
+      "Step 1: both SKILL.md files exist at required depths",
+      "Step 2: combat-design contains AttackData schema",
+      "Step 3: inventory-design contains ItemData schema",
+      "Step 4: both have typed GDScript code",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 36,
+    "phase": "godot-p8",
+    "description": "Add dialogue-design, enemy-design, and progression-design skills to game-design plugin. Depths >=18/20/15 lines respectively. enemy-design mentions NavigationAgent3D and state machine. progression-design mentions Curve resource.",
+    "verification": [
+      "Step 1: all three exist at required depths",
+      "Step 2: enemy-design mentions NavigationAgent3D and state machine",
+      "Step 3: progression-design mentions Curve resource",
+      "Step 4: dialogue-design mentions Dialogic 2",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 37,
+    "phase": "godot-p8",
+    "description": "Create godot-physics plugin with character-movement skill (>=22 lines). Must mention coyote time, jump buffering, air acceleration, and contain a complete typed CharacterBody3D movement GDScript example.",
+    "verification": [
+      "Step 1: plugins/godot-physics/.claude-plugin/plugin.json exists",
+      "Step 2: character-movement body >=22 lines",
+      "Step 3: mentions coyote time and jump buffering",
+      "Step 4: contains typed GDScript movement example",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 38,
+    "phase": "godot-p8",
+    "description": "Add collision-layers, area-detection, rigidbody-patterns, and projectile-system skills to godot-physics. Each at required depths. projectile-system mentions pooling. area-detection mentions ghost frames.",
+    "verification": [
+      "Step 1: all four SKILL.md files exist at required depths",
+      "Step 2: projectile-system mentions pooling",
+      "Step 3: area-detection mentions ghost frames",
+      "Step 4: collision-layers has CollisionLayer constants class",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 39,
+    "phase": "godot-p8",
+    "description": "Create godot-ui plugin with hud-design, menu-design, theme-system, and ui-signals skills. Each >=15 lines. hud-design mentions CanvasLayer and TextureProgressBar. menu-design mentions get_tree().paused and FocusMode.",
+    "verification": [
+      "Step 1: plugins/godot-ui/.claude-plugin/plugin.json exists",
+      "Step 2: all four SKILL.md files exist >=15 lines",
+      "Step 3: hud-design mentions CanvasLayer",
+      "Step 4: menu-design mentions get_tree().paused",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 40,
+    "phase": "godot-p8",
+    "description": "Create godot-audio plugin with audio-architecture, adaptive-music, and sfx-patterns skills. Each >=15 lines. audio-architecture mentions bus structure. adaptive-music mentions state machine and transitions.",
+    "verification": [
+      "Step 1: plugins/godot-audio/.claude-plugin/plugin.json exists",
+      "Step 2: all three SKILL.md files exist >=15 lines",
+      "Step 3: audio-architecture mentions bus structure",
+      "Step 4: adaptive-music mentions state machine",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 41,
+    "phase": "godot-p8",
+    "description": "Create integration tests for godot-physics (>=8 functions), godot-ui (>=6 functions), godot-audio (>=5 functions), and expanded game-design skills (>=6 functions).",
+    "verification": [
+      "Step 1: all four test files exist at required function counts",
+      "Step 2: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 42,
+    "phase": "godot-p9",
+    "description": "Add Godot 4 version guard to all existing GDScript-containing SKILL.md files (godot-patterns, gdscript-guide, godot-code-quality, game-design plugins). Add test to test_plugin_structure.py verifying guard presence.",
+    "verification": [
+      "Step 1: all GDScript-containing SKILL.md files have 'Godot 4' and 'Godot 3' in content",
+      "Step 2: new test test_godot_skills_have_version_guard exists and passes",
+      "Step 3: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 43,
+    "phase": "godot-p9",
+    "description": "Create cookbook/api-ref/ fragments for CharacterBody3D, RigidBody3D, Area3D. Each >=25 lines with extends chain, key properties/methods/signals, and a typed GDScript usage example.",
+    "verification": [
+      "Step 1: all three files exist >=25 lines",
+      "Step 2: each contains extends chain and typed example",
+      "Step 3: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 44,
+    "phase": "godot-p9",
+    "description": "Create cookbook/api-ref/ fragments for AnimationPlayer, NavigationAgent3D, AudioStreamPlayer. Same requirements as feature 43.",
+    "verification": [
+      "Step 1: all three files exist >=25 lines",
+      "Step 2: each contains extends chain and typed example",
+      "Step 3: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 45,
+    "phase": "godot-p9",
+    "description": "Create cookbook/api-ref/Resource.md and cookbook/api-ref/Signal.md. >=25 lines each. Resource covers custom subclasses, @export, load/save. Signal covers typed declarations, connect(), emit(), disconnect().",
+    "verification": [
+      "Step 1: both files exist >=25 lines",
+      "Step 2: Resource.md mentions @export and custom subclass",
+      "Step 3: Signal.md mentions connect() and emit()",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 46,
+    "phase": "godot-p9",
+    "description": "Add api-lookup skill to gdscript-guide plugin. Body >=15 lines. Mentions cookbook/api-ref/, 'verify before write' rule, and hallucination red flag patterns.",
+    "verification": [
+      "Step 1: SKILL.md exists >=15 lines",
+      "Step 2: mentions cookbook/api-ref/",
+      "Step 3: mentions 'verify before write'",
+      "Step 4: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 47,
+    "phase": "godot-p10",
+    "description": "Create agent/prompts-game/implement_feature.md >=80 lines. Must contain all 7 steps, the [APPROVED] marker check, GDAI MCP conditional, and 'Never implement without approved spec' rule.",
+    "verification": [
+      "Step 1: file exists >=80 lines",
+      "Step 2: contains all 7 steps (GET BEARINGS through COMMIT)",
+      "Step 3: contains '[APPROVED]' marker check logic",
+      "Step 4: contains GDAI MCP conditional usage",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 48,
+    "phase": "godot-p10",
+    "description": "Create agent/prompts-game/iterate_on_feedback.md >=50 lines. Must contain feel/bug/performance/visual categorization, the [APPROVED]/[SKIP] marker workflow, and the 'minimal change' rule.",
+    "verification": [
+      "Step 1: file exists >=50 lines",
+      "Step 2: contains four complaint categories",
+      "Step 3: contains [APPROVED] and [SKIP] markers",
+      "Step 4: mentions 'minimal change'",
+      "Step 5: all tests pass"
+    ],
+    "passes": true
+  },
+  {
+    "id": 49,
+    "phase": "godot-p10",
+    "description": "Create cookbook/hooks/game-session.md >=30 lines with complete hooks.json block. Update cookbook/claude-md/godot.md with 5-8 line session protocol section referencing designer-brief and game-session hooks.",
+    "verification": [
+      "Step 1: cookbook/hooks/game-session.md exists >=30 lines with hooks.json block",
+      "Step 2: cookbook/claude-md/godot.md has new session protocol section",
+      "Step 3: uv run pytest tests/ -v -- all pass"
+    ],
+    "passes": true
   }
 ]

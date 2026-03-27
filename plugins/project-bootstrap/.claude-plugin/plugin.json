@@ -1,0 +1,13 @@
+{
+  "name": "project-bootstrap",
+  "version": "1.0.0",
+  "description": "Skills for initializing and configuring a new Godot 4.x project from scratch.",
+  "license": "MIT",
+  "keywords": ["bootstrap", "project", "setup", "godot"],
+  "skills": [
+    "new-project",
+    "configure-quality",
+    "setup-autoloads",
+    "setup-directories"
+  ]
+}

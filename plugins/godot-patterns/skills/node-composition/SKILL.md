@@ -6,6 +6,8 @@ description: >-
   compose it?", "how do I add Y to multiple enemies?", or "what's the Godot
   way to share behavior between scenes?"
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Recommend the right Godot 4.x node composition strategy for a feature.
 

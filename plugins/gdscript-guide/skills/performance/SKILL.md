@@ -6,6 +6,8 @@ description: >-
   and suggest targeted fixes. Use when asked to "optimize this script",
   "why is this lagging?", or "make this more performant".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Review and optimize GDScript for Godot 4.x performance.
 

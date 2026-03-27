@@ -1,0 +1,13 @@
+{
+  "name": "godot-ui",
+  "version": "1.0.0",
+  "description": "Skills for Godot 4.x UI: HUD design, menus, theme systems, and signal wiring.",
+  "license": "MIT",
+  "keywords": ["ui", "hud", "menu", "theme", "godot"],
+  "skills": [
+    "hud-design",
+    "menu-design",
+    "theme-system",
+    "ui-signals"
+  ]
+}

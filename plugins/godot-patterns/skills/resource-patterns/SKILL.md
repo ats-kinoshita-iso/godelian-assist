@@ -7,6 +7,8 @@ description: >-
   scenes. Use when asked to "design the data model for X", "should this be a
   Resource?", or "how do I share config data between scenes?"
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design and implement Godot 4.x Resource subclasses for game data.
 

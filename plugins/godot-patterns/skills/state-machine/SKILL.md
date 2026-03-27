@@ -6,6 +6,8 @@ description: >-
   Use when asked to "implement a state machine", "design the AI states for X",
   "how do I manage player states?", or "refactor this if/elif chain into states".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Implement a state machine for a Godot 4.x entity.
 

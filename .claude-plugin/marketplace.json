@@ -17,21 +17,39 @@
       "version": "1.1.0"
     },
     {
+      "name": "designer-brief",
+      "source": "./plugins/designer-brief",
+      "description": "Formal designer-to-programmer handoff workflow: brief, spec approval, iteration, and feature completion for Godot game development.",
+      "version": "1.0.0"
+    },
+    {
       "name": "eval-framework",
       "source": "./plugins/eval-framework",
       "description": "Evaluation framework skills for designing scoring rubrics, running structured evaluations on LLM outputs, and comparing candidate outputs to recommend a winner.",
       "version": "1.0.0"
     },
     {
+      "name": "game-backlog",
+      "source": "./plugins/game-backlog",
+      "description": "Prioritized game feature backlog: initialize, track status, advance features, and manage the designer-to-programmer pipeline.",
+      "version": "1.0.0"
+    },
+    {
       "name": "game-design",
       "source": "./plugins/game-design",
       "description": "Game design skills for 3D action-RPGs: core loop design, system architecture, balance tuning, and progression design. Bridges design intent to Godot 4.x implementation.",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "name": "gdscript-guide",
       "source": "./plugins/gdscript-guide",
       "description": "GDScript 2.0 idioms, static typing best practices, performance patterns, and style guidance for Godot 4.x. Reference when writing or reviewing GDScript code.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "godot-audio",
+      "source": "./plugins/godot-audio",
+      "description": "Skills for Godot 4.x audio: bus architecture, adaptive music, and SFX pooling patterns.",
       "version": "1.0.0"
     },
     {
@@ -44,6 +62,18 @@
       "name": "godot-patterns",
       "source": "./plugins/godot-patterns",
       "description": "Architectural patterns for Godot 4.x: scene composition, node hierarchies, signal-based decoupling, Autoloads, and Resource design. Reference when designing new scenes or refactoring existing ones.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "godot-physics",
+      "source": "./plugins/godot-physics",
+      "description": "Skills for Godot 4.x physics: character movement, collision layers, area detection, rigidbodies, and projectiles.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "godot-ui",
+      "source": "./plugins/godot-ui",
+      "description": "Skills for Godot 4.x UI: HUD design, menus, theme systems, and signal wiring.",
       "version": "1.0.0"
     },
     {
@@ -71,6 +101,18 @@
       "version": "2.1.0"
     },
     {
+      "name": "project-bootstrap",
+      "source": "./plugins/project-bootstrap",
+      "description": "Skills for initializing and configuring a new Godot 4.x project from scratch.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "scene-builder",
+      "source": "./plugins/scene-builder",
+      "description": "Skills for generating and auditing Godot .tscn scene files.",
+      "version": "1.0.0"
+    },
+    {
       "name": "test-quality",
       "source": "./plugins/test-quality",
       "description": "Test development and improvement system that tracks quality patterns and progressively improves the test suite.",
@@ -83,5 +125,5 @@
       "version": "1.0.0"
     }
   ],
-  "_generated_at": "2026-03-23T02:48:22.279847+00:00"
+  "_generated_at": "2026-03-27T22:05:48.006132+00:00"
 }

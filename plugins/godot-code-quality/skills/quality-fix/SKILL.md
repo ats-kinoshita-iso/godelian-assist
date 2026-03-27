@@ -6,6 +6,8 @@ description: >-
   Use when asked to "fix formatting", "auto-fix lint", "clean up code", or
   "fix quality issues".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Auto-fix all fixable quality issues in the Godot project.
 

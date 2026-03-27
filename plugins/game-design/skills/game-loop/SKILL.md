@@ -6,6 +6,8 @@ description: >-
   to Godot 4.x scene and system architecture. Use when asked to "design the
   core loop", "what's the game loop?", or "how does the player progress?".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design or review the core game loop for a 3D action-RPG.
 

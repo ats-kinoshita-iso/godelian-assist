@@ -116,4 +116,15 @@ DO NOT proactively:
 - Rename nodes in scenes (breaks references project-wide)
 - Remove `@tool` annotations without explicit instruction
 - Refactor scenes not part of the current task
+
+## Session Protocol
+
+Every coding session follows the designer-brief workflow:
+
+1. **Start**: Check `plans/game-backlog.json` for the current `in_progress` feature. Read its spec at `plans/specs/ACTIVE_SPEC.md`. If no approved spec exists, run `/brief` before writing any code.
+2. **Implement**: Use `agent/prompts-game/implement_feature.md` as the implementation guide.
+3. **Iterate**: After designer playtest, use `agent/prompts-game/iterate_on_feedback.md` to process feedback. Every change requires `[APPROVED]` or `[SKIP]` marker before implementation.
+4. **Complete**: Run `/feature-complete` when all acceptance criteria are met.
+
+Session hooks are configured in `cookbook/hooks/game-session.md` — the `designer-brief` plugin's `PreToolUse` hook warns when no active spec is set before writing `.gd`, `.tscn`, or `.tres` files.
 ```

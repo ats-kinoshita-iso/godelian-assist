@@ -6,6 +6,8 @@ description: >-
   Use when asked to "convert this to C#", "port this script to C#", or
   "what is the C# equivalent of this GDScript?"
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Convert a GDScript 2.0 file to idiomatic C# for Godot 4.x.
 

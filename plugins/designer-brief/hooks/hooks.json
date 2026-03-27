@@ -1,0 +1,13 @@
+{
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "type": "command",
+      "command": "python plans/check_spec.py",
+      "matcher": {
+        "tool_name": ["Write", "Edit"],
+        "file_pattern": ".*\\.(gd|tscn|tres)$"
+      }
+    }
+  ]
+}

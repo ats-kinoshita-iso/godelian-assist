@@ -1,0 +1,17 @@
+{
+  "name": "game-backlog",
+  "description": "Prioritized game feature backlog: initialize, track status, advance features, and manage the designer-to-programmer pipeline.",
+  "version": "1.0.0",
+  "author": {
+    "name": "ats-kinoshita-iso"
+  },
+  "repository": "https://github.com/ats-kinoshita-iso/godelian-assist",
+  "license": "MIT",
+  "keywords": [
+    "backlog",
+    "workflow",
+    "features",
+    "planning",
+    "godot"
+  ]
+}

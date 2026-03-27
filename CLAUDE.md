@@ -26,6 +26,7 @@ An autonomous Godot 4.x game development assistant — plugin library and agent 
 - Regenerate marketplace: `uv run python tools/marketplace_gen.py`
 
 ### Godot (when working in a game repo)
+- **Godot executable**: `"/c/Users/akino/Desktop/Godot_v4.6.1-stable_win64.exe"` (add to PATH or use full path)
 - Validate GDScript: `godot --headless --check-only -s <script.gd>`
 - Run GdUnit4 tests: `godot --headless -s addons/gdUnit4/bin/GdUnitCmdTool.gd`
 - Format GDScript: `gdformat <file.gd>` (requires gdtoolkit)

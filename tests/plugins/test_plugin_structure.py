@@ -126,3 +126,33 @@ def test_marketplace_covers_all_plugins() -> None:
     plugin_names = {p.name for p in _plugin_dirs()}
     missing = plugin_names - marketplace_names
     assert not missing, f"Plugins missing from marketplace.json: {sorted(missing)}"
+
+
+# Plugins whose GDScript-containing skills must carry a version guard
+_GDSCRIPT_PLUGINS = {"godot-patterns", "gdscript-guide", "godot-code-quality", "game-design"}
+_GDSCRIPT_INDICATORS = {"class_name", "extends ", "@export", "func ", "gdscript"}
+
+
+def _skill_has_gdscript(content: str) -> bool:
+    lower = content.lower()
+    return any(ind in lower for ind in _GDSCRIPT_INDICATORS)
+
+
+def test_godot_skills_have_version_guard() -> None:
+    """GDScript-containing skills in designated plugins must mention both Godot 4 and Godot 3."""
+    failures: list[str] = []
+    for plugin_dir in _plugin_dirs():
+        if plugin_dir.name not in _GDSCRIPT_PLUGINS:
+            continue
+        for skill_md in plugin_dir.rglob("SKILL.md"):
+            content = skill_md.read_text(encoding="utf-8")
+            if not _skill_has_gdscript(content):
+                continue
+            has_g4 = "Godot 4" in content or "godot 4" in content.lower()
+            has_g3 = "Godot 3" in content or "godot 3" in content.lower()
+            if not (has_g4 and has_g3):
+                rel = skill_md.relative_to(PLUGINS_DIR)
+                failures.append(
+                    f"{rel}: missing {'Godot 4' if not has_g4 else 'Godot 3'} version guard"
+                )
+    assert not failures, "Skills missing version guard:\n" + "\n".join(failures)

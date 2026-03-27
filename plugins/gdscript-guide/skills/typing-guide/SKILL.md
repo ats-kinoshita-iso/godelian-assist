@@ -5,6 +5,8 @@ description: >-
   fully-typed version. Use when asked to "add types to this script", "type
   this GDScript", "fix the type annotations", or "make this fully static-typed".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Add or fix static type annotations in a GDScript 2.0 file.
 

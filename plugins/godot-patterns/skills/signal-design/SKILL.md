@@ -6,6 +6,8 @@ description: >-
   connections or an event bus. Use when asked "how should signals work for X",
   "design the event system for Y", or "review my signal connections".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design or review the signal architecture for a Godot 4.x system.
 

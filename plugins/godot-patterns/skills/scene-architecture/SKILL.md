@@ -6,6 +6,8 @@ description: >-
   node, and flags anti-patterns. Use when asked to "design the scene for X",
   "review my scene structure", or "how should I structure X in Godot".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design or review a Godot 4.x scene hierarchy.
 

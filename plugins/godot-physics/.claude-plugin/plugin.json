@@ -1,0 +1,14 @@
+{
+  "name": "godot-physics",
+  "version": "1.0.0",
+  "description": "Skills for Godot 4.x physics: character movement, collision layers, area detection, rigidbodies, and projectiles.",
+  "license": "MIT",
+  "keywords": ["physics", "movement", "collision", "godot"],
+  "skills": [
+    "character-movement",
+    "collision-layers",
+    "area-detection",
+    "rigidbody-patterns",
+    "projectile-system"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "game-design",
   "description": "Game design skills for 3D action-RPGs: core loop design, system architecture, balance tuning, and progression design. Bridges design intent to Godot 4.x implementation.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "ats-kinoshita-iso"
   },
@@ -14,5 +14,17 @@
     "balance",
     "progression",
     "godot"
+  ],
+  "skills": [
+    "game-loop",
+    "systems-design",
+    "balance-design",
+    "level-design",
+    "save-system",
+    "combat-design",
+    "inventory-design",
+    "dialogue-design",
+    "enemy-design",
+    "progression-design"
   ]
 }

@@ -7,6 +7,8 @@ description: >-
   the combat", "tune the numbers", "how fast should the player level?", or
   "design the stat system".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Design or tune balance parameters for a 3D action-RPG system.
 

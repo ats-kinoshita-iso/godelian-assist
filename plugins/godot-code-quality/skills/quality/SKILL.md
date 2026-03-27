@@ -6,6 +6,8 @@ description: >-
   Use when asked to "check quality", "run all checks", "run the gate", or
   "what is the quality score".
 ---
+> **Godot version**: Godot 4.x (4.0+). All code examples use GDScript 2.0 and are not compatible with Godot 3.
+
 
 Run the full Godot quality gate and produce a scored report.
 
