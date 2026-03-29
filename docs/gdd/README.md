@@ -1,6 +1,6 @@
 # Aiki-FPS: Game Design Document (MVP)
 
-**Version**: 0.1.0-alpha
+**Version**: 0.2.0-alpha
 **Last Updated**: 2026-03-29
 **Engine**: Godot 4.x (4.6.1+)
 **Language**: GDScript 2.0
@@ -82,12 +82,19 @@ balance, composure, and martial readiness.
 | Idle / no combat | Regen +3/s | Regen +5/s |
 
 **Ki Break**: When enemy Ki reaches 0, they enter a **stagger** state
-(~2 seconds). Player can execute a decisive technique (ikkyo, shihonage, etc.)
-for massive damage. This is the primary kill condition — like Sekiro's
-deathblow after posture break.
+(~2 seconds). An **auto-cinematic decisive technique** triggers — the camera
+pulls to a cinematic angle as the player executes a finishing Aikido technique
+(ikkyo, shihonage, kotegaeshi, etc.) similar to ZZZ's chain attacks or Sifu's
+takedowns. This is the primary kill condition — like Sekiro's deathblow after
+posture break, but presented as an automatic cinematic rather than a QTE.
 
 **Player Ki at 0**: Player enters a stumble state (~1 second), vulnerable to
 a heavy hit. Not instant death, but very dangerous.
+
+**Player Death**: On death, a brief **death screen** displays (Sifu-style)
+showing what killed the player and a prompt to retry. This gives the player
+a moment to process what went wrong before the next attempt — supporting the
+routing/optimization loop rather than brute-force retries.
 
 ### 2.3 Musubi System (the timing window)
 
@@ -229,12 +236,11 @@ optimize your route, improve your timing, get a better score.
 │                                              │
 │                                              │
 │  [HP ██████░░]          ◆ MUSUBI INDICATOR   │
-│  [Stamina ████████░░]                        │
 └─────────────────────────────────────────────┘
 ```
 
 - **Ki gauges**: top of screen, opponent-style (like Sekiro)
-- **HP / Stamina**: bottom-left, minimal
+- **HP**: bottom-left, minimal
 - **Musubi indicator**: center-bottom diamond that flashes on successful
   Musubi timing. Color-coded: gold = perfect, white = good, red = miss
 
@@ -272,7 +278,6 @@ demo/fps-controller/
 │   ├── player/
 │   │   ├── player.gd              # Extend State enum, add footwork states
 │   │   ├── health_component.gd    # Reuse as-is
-│   │   ├── stamina_component.gd   # Reuse as-is (footwork costs stamina)
 │   │   ├── footwork_system.gd     # NEW: footwork state machine & movement
 │   │   ├── ki_component.gd        # NEW: Ki gauge (parallel to health)
 │   │   ├── musubi_system.gd       # NEW: timing window detection
@@ -288,7 +293,8 @@ demo/fps-controller/
 │   ├── ui/
 │   │   ├── hud.gd                 # NEW: Ki gauges, HP, Musubi indicator
 │   │   ├── main_menu.gd           # NEW
-│   │   └── results_screen.gd      # NEW
+│   │   ├── results_screen.gd      # NEW
+│   │   └── death_screen.gd        # NEW: Sifu-style death screen
 │   ├── dojo/
 │   │   ├── dojo_manager.gd        # NEW: tutorial flow controller
 │   │   ├── training_dummy.gd      # NEW: static target for drills
@@ -296,6 +302,7 @@ demo/fps-controller/
 │   └── resources/
 │       ├── player_stats.gd        # Extend with footwork/Ki/combat params
 │       ├── weapon_data.gd         # NEW: katana stats Resource
+│       ├── decisive_technique.gd  # NEW: Resource for cinematic finisher data
 │       └── default_player_stats.tres
 ├── scenes/
 │   ├── player.tscn                # Extend with new child nodes
@@ -307,7 +314,6 @@ demo/fps-controller/
 │       └── main_menu.tscn         # NEW
 └── tests/
     ├── test_health_component.gd   # Existing
-    ├── test_stamina_component.gd  # Existing
     ├── test_ki_component.gd       # NEW
     ├── test_footwork_system.gd    # NEW
     ├── test_musubi_system.gd      # NEW
@@ -325,7 +331,6 @@ Player (CharacterBody3D)
 │   └── WeaponMount (Node3D)
 │       └── KatanaModel (MeshInstance3D or placeholder)
 ├── HealthComponent (Node)
-├── StaminaComponent (Node)
 ├── KiComponent (Node)             # NEW
 ├── FootworkSystem (Node)          # NEW
 ├── MusubiSystem (Node)            # NEW
@@ -358,12 +363,13 @@ The Player's state enum expands:
 
 ```gdscript
 enum State {
-    IDLE, WALKING, SPRINTING, JUMPING, FALLING, DEAD,  # existing
-    IRIMI_OMOTE, IRIMI_URA,                             # new
-    TENKAN_OMOTE, TENKAN_URA,                           # new
-    FOOTWORK_RECOVERY,                                   # new
-    ATTACKING,                                           # new
-    STUMBLE,                                             # new (Ki depleted)
+    IDLE, WALKING, JUMPING, FALLING, DEAD,  # existing (SPRINTING removed — no stamina)
+    IRIMI_OMOTE, IRIMI_URA,                 # new — footwork
+    TENKAN_OMOTE, TENKAN_URA,               # new — footwork
+    FOOTWORK_RECOVERY,                       # new — brief vulnerability after footwork
+    ATTACKING,                               # new — weapon strike active
+    STUMBLE,                                 # new — Ki depleted, vulnerable
+    DECISIVE_TECHNIQUE,                      # new — auto-cinematic finisher playing
 }
 ```
 
@@ -393,10 +399,10 @@ All values are exposed via Resource files for rapid iteration:
 ## 8. Implementation Phases
 
 ### Phase 0 — Foundation (~3 sessions)
-- [ ] Extend PlayerStats with footwork and combat parameters
+- [ ] Extend PlayerStats with footwork and combat parameters (remove stamina)
 - [ ] Create KiComponent (mirror HealthComponent pattern)
 - [ ] Create FootworkSystem node with irimi/tenkan state machine
-- [ ] Input mapping for footwork (Shift + direction)
+- [ ] Input mapping for footwork (Shift + direction, RMB for ura)
 - [ ] Unit tests for KiComponent and FootworkSystem
 
 ### Phase 1 — Core Footwork (~3 sessions)
@@ -404,8 +410,8 @@ All values are exposed via Resource files for rapid iteration:
 - [ ] Tenkan movement (rotational interpolation, omote/ura variants)
 - [ ] CameraFX — procedural sway per footwork type
 - [ ] FOV shifts during footwork
-- [ ] Footwork costs stamina (integrate with existing StaminaComponent)
-- [ ] State machine integration with Player
+- [ ] State machine integration with Player (remove SPRINTING state)
+- [ ] Footwork cooldown system (Ki-gated, not stamina-gated)
 
 ### Phase 2 — Combat Loop (~4 sessions)
 - [ ] Hitbox/Hurtbox Area3D system
@@ -413,7 +419,8 @@ All values are exposed via Resource files for rapid iteration:
 - [ ] MusubiSystem — timing window detection
 - [ ] Enemy base class with AI state machine
 - [ ] Kendo Practitioner — 4 attack patterns with tells
-- [ ] Ki break → stagger → decisive technique
+- [ ] Ki break → stagger → auto-cinematic decisive technique
+- [ ] Decisive technique camera system (cinematic angle, ZZZ/Sifu style)
 - [ ] Hit-stop and screen shake via CameraFX
 - [ ] Unit tests for MusubiSystem and WeaponController
 
@@ -427,7 +434,8 @@ All values are exposed via Resource files for rapid iteration:
 ### Phase 4 — Arena & Polish (~2 sessions)
 - [ ] Arena environment (dojo courtyard)
 - [ ] Scoring system (time, accuracy, damage, variety)
-- [ ] HUD — Ki gauges, HP, stamina, Musubi indicator
+- [ ] HUD — Ki gauges, HP, Musubi indicator
+- [ ] Death screen (Sifu-style: show cause of death, retry prompt)
 - [ ] Main menu, pause menu, results screen
 - [ ] Audio: footsteps, weapon sounds, Musubi chimes, Ki break
 - [ ] Local leaderboard (save to user:// )
@@ -438,18 +446,31 @@ All values are exposed via Resource files for rapid iteration:
 - [ ] Ki economy balance (fights too long? too short?)
 - [ ] Enemy difficulty curve (tells readable? combos fair?)
 - [ ] Footwork responsiveness (inputs feel snappy?)
+- [ ] Death screen pacing (informative without breaking flow?)
 
 ---
 
-## 9. Open Questions
+## 9. Design Decisions (Resolved)
 
-1. **Decisive techniques**: Should these be QTE, automatic animation, or
-   player-aimed? Leaning toward automatic cinematic for MVP.
-2. **Stamina vs Ki overlap**: Should footwork cost stamina, Ki, or both?
-   Current design: stamina for movement cost, Ki for combat success/failure.
-3. **Death mechanic**: Instant restart (Hotline Miami/Ghostrunner style) or
-   brief death screen? Leaning instant restart for arena mode flow.
-4. **Enemy variety post-MVP**: Naginata user (range), unarmed grappler
+1. **Decisive techniques**: Auto-cinematic (ZZZ chain attack / Sifu takedown
+   style). Camera pulls to cinematic angle, player executes Aikido technique
+   automatically. No QTE.
+2. **No stamina system**: Footwork is Ki-gated and cooldown-gated, not
+   stamina-gated. The gameplay loop is about routing and timing (Ghostrunner /
+   ZZZ / Sifu), not resource management. StaminaComponent from the FPS demo
+   is not used.
+3. **Death mechanic**: Brief death screen (Sifu-style). Shows what killed you,
+   gives a moment to process, then retry. Supports the route-optimization loop.
+
+## 10. Open Questions
+
+1. **Enemy variety post-MVP**: Naginata user (range), unarmed grappler
    (close range), archer (ranged pressure)?
-5. **Mobile adaptation**: How do 6 footwork types map to touch? Swipe
+2. **Mobile adaptation**: How do 6 footwork types map to touch? Swipe
    directions + tap timing? This is a future problem but worth noting.
+3. **Decisive technique variety**: Should different Ki-break situations trigger
+   different cinematic finishers, or one per weapon for MVP?
+4. **Footwork cooldown tuning**: How long between consecutive footwork? Too
+   short = spam, too long = sluggish. Needs playtesting.
+5. **Movement speed**: Without sprint, should base movement be faster? Or is
+   footwork the primary way to close/create distance?
